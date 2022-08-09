@@ -6,6 +6,7 @@ import org.apache.commons.pool2.ObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PreDestroy;
 import java.net.Socket;
 
 @Component
@@ -37,5 +38,11 @@ public class SocketPool {
             log.error("Unable to return socket to the pool");
             throw new InternalServerException();
         }
+    }
+
+    @PreDestroy
+    public void shutdown() {
+        System.out.println("closing socket pool");
+        pool.close();;
     }
 }

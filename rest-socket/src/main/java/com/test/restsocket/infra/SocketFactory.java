@@ -22,10 +22,9 @@ public class SocketFactory extends BasePooledObjectFactory<Socket> {
         return new DefaultPooledObject<Socket>(socket);
     }
 
-//    @Override
-//    public void destroyObject(PooledObject<Socket> p) throws Exception {
-//        System.out.println("cloing");
-//        Socket s = (Socket) p.getObject();
-//        s.close();
-//    }
+    @Override
+    public void destroyObject(PooledObject<Socket> p) throws Exception {
+        Socket s = (Socket) p.getObject();
+        s.close();
+    }
 }

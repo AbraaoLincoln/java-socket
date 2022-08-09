@@ -29,7 +29,7 @@ public class SocketPool {
 
     public void returnSocket(Socket socket) {
         if(socket == null) {
-            log.error("Null socket cant be return to the pool");
+            log.error("the socket is null it can't be return to the pool");
         }
 
         try {
@@ -42,7 +42,7 @@ public class SocketPool {
 
     @PreDestroy
     public void shutdown() {
-        System.out.println("closing socket pool");
+        log.info("closing socket pool");
         pool.close();;
     }
 }
